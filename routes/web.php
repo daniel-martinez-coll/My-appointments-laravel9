@@ -20,3 +20,18 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//Specialty
+Route::get('/specialties', [App\Http\Controllers\SpecialtyController::class, 'index'])->name('home');
+Route::get('/specialties/create', [App\Http\Controllers\SpecialtyController::class, 'create'])->name('create');
+Route::get('/specialties/{specialty}/edit', [App\Http\Controllers\SpecialtyController::class, 'edit'])->name('edit');
+Route::post('/specialties', [App\Http\Controllers\SpecialtyController::class, 'store'])->name('store');
+Route::put('/specialties/{specialty}', [App\Http\Controllers\SpecialtyController::class, 'update'])->name('update');
+Route::delete('/specialties/{specialty}/delete', [App\Http\Controllers\SpecialtyController::class, 'destroy'])->name('destroy');
+
+
+// Doctors
+//Route::resource('doctors',[App\Http\Controllers\DoctorController::class]);
+Route::get('/doctors', [App\Http\Controllers\DoctorController, 'index'])->name('home');
+Route::get('/doctors/create', [App\Http\Controllers\DoctorController, 'create'])->name('create');
+// Patient
