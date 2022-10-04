@@ -9,38 +9,86 @@
     <hr class="horizontal dark mt-0">
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" href="./home">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Dashboard</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " href="{{ url('specialties') }}">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Especialidades</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " href="{{ url('doctors') }}">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Médicos</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " href="{{ url('patients') }}">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-satisfied text-warning text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Pacientes</span>
-          </a>
-        </li>
+
+        @if(auth()->user()->role == '1')
+          <li class="nav-item">
+            <a class="nav-link active" href="./home">
+              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="{{ url('specialties') }}">
+              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">Especialidades</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="{{ url('doctors') }}">
+              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">Médicos</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="{{ url('patients') }}">
+              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="ni ni-satisfied text-warning text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">Pacientes</span>
+            </a>
+          </li>
+
+        @elseif(auth()->user()->role == '3')
+          <li class="nav-item">
+            <a class="nav-link active" href="./schedule">
+              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">Gestionar Horarios</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="{{ url('specialties') }}">
+              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">Mis Citas</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="{{ url('doctors') }}">
+              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">Mis Pacientes</span>
+            </a>
+          </li>
+
+        @else
+          <li class="nav-item">
+            <a class="nav-link " href="{{ url('specialties') }}">
+              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">Reservar Citas</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="{{ url('doctors') }}">
+              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">Mis Citas</span>
+            </a>
+          </li>
+        @endif
+
         <li class="nav-item">           
           <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
               <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">

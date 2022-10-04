@@ -5,8 +5,8 @@
         <div class="card">
             <div class="card-header pb-0">
                 <div class="d-flex align-items-center">
-                    <p class="mb-0">Nuevo Doctor</p>
-                    <a href="{{ url('doctors') }}"  class="btn btn-dark btn-sm ms-auto">Volver</a>                    
+                    <p class="mb-0">Nuevo Paciente</p>
+                    <a href="{{ url('patients') }}"  class="btn btn-dark btn-sm ms-auto">Volver</a>                    
                 </div>
             </div>
             <div class="card-body"> 
@@ -19,7 +19,7 @@
                     @endforeach
                 </ul>
                 @endif
-                <form action="{{ url('/doctors') }}" method="POST">  
+                <form action="{{ url('/patients') }}" method="POST">  
                 @csrf 
                     <p class="text-uppercase text-sm">Información del Médico</p>
                     <div class="row">

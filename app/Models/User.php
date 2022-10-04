@@ -19,8 +19,17 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'firstName',
+        'lastName',        
         'email',
-        'password',
+        'password',            
+        'dni',
+        'address',
+        'phone', 
+        'city',
+        'country',
+        'postalCode',
+        'role',
     ];
 
     /**
@@ -41,4 +50,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function scopeAdmins($query){
+        return $query->where('role','1');
+    }
+
+    public function scopePatients($query){
+        return $query->where('role','2');
+    }
+
+    public function scopeDoctors($query){
+        return $query->where('role','3');
+    }
 }
